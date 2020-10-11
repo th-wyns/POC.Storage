@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Null implementations of the storage module. For testing purposes.</Description>
+    <TargetFramework>$(LibraryTargetFramework)</TargetFramework>
+    <RootNamespace>$(ProjectNamespace).Null</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageTags>storage;null</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\POC.Storage.Core.csproj" />
+  </ItemGroup>
+
+</Project>

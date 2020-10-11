@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>MsSql implementations of the storage module.</Description>
+    <TargetFramework>$(LibraryTargetFramework)</TargetFramework>
+    <RootNamespace>$(ProjectNamespace).MsSql</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageTags>storage;mssql</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\POC.Storage.Core.csproj" />
+  </ItemGroup>
+
+</Project>

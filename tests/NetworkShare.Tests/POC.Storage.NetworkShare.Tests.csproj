@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(UnitTestTargetFramework)</TargetFramework>
+    <RootNamespace>$(ProjectNamespace).NetworkShare.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="$(MicrosoftExtensionsConfigurationJson)" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(MicrosoftNETTestSdkVersion)" />
+    <PackageReference Include="xunit" Version="$(XUnitVersion)" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="$(XUnitRunnerVisualStudioVersion)" />
+    <PackageReference Include="coverlet.collector" Version="$(CoverletCollectorVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\MsSql\POC.Storage.MsSql.csproj" />
+    <ProjectReference Include="..\..\src\NetworkShare\POC.Storage.NetworkShare.csproj" />
+    <ProjectReference Include="..\..\src\Null\POC.Storage.Null.csproj" />
+    <ProjectReference Include="..\Core.Tests\POC.Storage.Core.Tests.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

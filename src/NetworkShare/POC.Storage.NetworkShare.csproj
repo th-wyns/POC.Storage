@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>NetworkShare implementations of the storage module.</Description>
+    <TargetFramework>$(LibraryTargetFramework)</TargetFramework>
+    <RootNamespace>$(ProjectNamespace).NetworkShare</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageTags>storage;network share</PackageTags>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Core\POC.Storage.Core.csproj" />
+  </ItemGroup>
+
+</Project>

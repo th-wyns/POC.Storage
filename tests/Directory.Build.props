@@ -1,0 +1,17 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
+  
+  <PropertyGroup>
+    <StorageTestsSharedSourceRoot>$(RepositoryRoot)tests\Shared\</StorageTestsSharedSourceRoot>
+  </PropertyGroup>
+
+  <!--
+    Statically Linked Source Files
+  -->
+
+  <ItemGroup>
+    <Compile Include="$(StorageTestsSharedSourceRoot)**\*.cs" />
+  </ItemGroup>
+  
+</Project>

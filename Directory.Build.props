@@ -1,0 +1,87 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Import Project="Version.props" />
+
+  <PropertyGroup>
+    <RepositoryRoot>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)'))</RepositoryRoot>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>Vincze Tamás</Authors>
+    <Product>POC Storage</Product>
+    <VersionSuffix Condition="'$(VersionSuffix)'!='' AND '$(BuildNumber)' != ''">$(VersionSuffix)-$(BuildNumber)</VersionSuffix>
+  </PropertyGroup>
+
+  <!--
+    Target Framework Settings
+
+      - LibraryTargetFrameworks: Compiles to .NET Standard 2.1 (.NET Core & .NET Framework)
+      - ProjectTargetFrameworks: Compiles to .NET Core 3.0 (.NET Core & ASP.NET Core)
+  -->
+
+  <PropertyGroup>
+    <ProjectTargetFramework>netcoreapp3.1</ProjectTargetFramework>
+    <LibraryTargetFramework>netstandard2.1</LibraryTargetFramework>
+    <UnitTestTargetFramework>netcoreapp3.1</UnitTestTargetFramework>
+    <PerfTestTargetFramework>netcoreapp3.1</PerfTestTargetFramework>
+    <SamplesTargetFramework>netcoreapp3.1</SamplesTargetFramework>
+    <WindowsTargetFramework>net461</WindowsTargetFramework>
+  </PropertyGroup>
+
+  <!--
+    Namespace & Directory Settings
+      - Namespace templates
+      - Compiler generated artifacts, package files, etc.
+      - Tools (NSwag, etc.)
+  -->
+
+  <PropertyGroup>
+    <ProjectNamespace>POC.Storage</ProjectNamespace>
+    <RootNamespace>$(ProjectNamespace)</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <BinaryPath>$(RepositoryRoot)artifacts\</BinaryPath>
+    <DeployPath>$(RepositoryRoot)artifacts\Deploy</DeployPath>
+    <OutputPath>$(BinaryPath)$(Configuration)\$(MSBuildProjectName)\</OutputPath>
+    <LibraryOutputPath>$(RepositoryRoot)lib\</LibraryOutputPath>
+    <BaseIntermediateOutputPath>$(BinaryPath)Obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <PackageSourcePath>$(RepositoryRoot)pkg\</PackageSourcePath>
+    <PackageOutputPath>$(BinaryPath)Packages\</PackageOutputPath>
+  </PropertyGroup>
+
+
+  <!--
+    .NET Compiler Feature Settings
+
+      - Configure default namespace
+      - Prefix assembly names with the default namespace
+      - Enable C# 8 non-nullable reference types
+      - Treat warnings as errors
+  -->
+
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsNotAsErrors>$(WarningsNotAsErrors);CS1591</WarningsNotAsErrors>
+    <WarningsNotAsErrors>$(WarningsNotAsErrors);xUnit1004</WarningsNotAsErrors>
+    <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
+  </PropertyGroup>
+  
+
+  <!--
+    .NET Code Analyzers
+    https://github.com/dotnet/roslyn-analyzers
+  -->
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="$(MicrosoftFxCopAnalyzersVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <MSBuildProjectOutputFiles Include="$(OutputPath)**\*.*" />
+    <MSBuildProjectImportFiles Include="Contents\Root\**\*" />
+  </ItemGroup>
+
+</Project>

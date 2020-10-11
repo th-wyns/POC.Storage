@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>$(UnitTestTargetFramework)</TargetFramework>
+    <RootNamespace>$(ProjectNamespace).Importer</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Elasticsearch\POC.Storage.Elasticsearch.csproj" />
+    <ProjectReference Include="..\..\src\MsSql\POC.Storage.MsSql.csproj" />
+    <ProjectReference Include="..\..\src\NetworkShare\POC.Storage.NetworkShare.csproj" />
+    <ProjectReference Include="..\..\src\Null\POC.Storage.Null.csproj" />
+    <ProjectReference Include="..\Core.Tests\POC.Storage.Core.Tests.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="LoadFileSample\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="LoadFileSample\IMAGES\IMG001\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="LoadFileSample\NATIVE\NATIVE001\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="LoadFileSample\TEXT\TEXT001\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Storage module POC.</Description>
+    <TargetFramework>$(LibraryTargetFramework)</TargetFramework>
+    <RootNamespace>$(ProjectNamespace)</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageTags>storage</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Report\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="..\..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="$(MicrosoftExtensionsConfigurationJson)" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.AzureKeyVault" Version="$(MicrosoftExtensionsConfigurationAzureKeyVault)" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="$(MicrosoftExtensionsLoggingVersion)" />
+  </ItemGroup>
+</Project>
