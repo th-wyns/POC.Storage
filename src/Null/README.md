@@ -1,2 +1,2 @@
 ﻿# Introduction
-Null related module implementations for the Storage feature. Used for testing purposes.
+Null module implementations for the Storage feature. Used for testing purposes.
