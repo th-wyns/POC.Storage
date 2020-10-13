@@ -1,10 +1,13 @@
 # Description
-Proof of concept for a custom storage implementation. The implementation uses a hybrid of SQL and NoSQL/Lucene storing mechanism. SQL is used for storgin original data and reporting and NoSQL/Lucene is used for search. Over the abstraction layers the solution has a MsSQL-Elasticsearch-Networkshare sample implementation. These can be replaced with other implementations like MySQL, PostgreSQL, SOLR, Azure Blob.
+Proof of concept for a custom storage implementation. The implementation uses a hybrid of SQL and NoSQL storing mechanism. SQL is used for storing original data and reporting. NoSQL/Lucene is used for searching. Over the abstraction layers the solution has a MsSQL-Elasticsearch-Networkshare implementation. These can be replaced with other implementations like MySQL, PostgreSQL, SOLR, Azure Blob.
 
 # Criteria
+- Dynamic schema
+  - Add new fields on the fly
+  - Have different field types (text, number, date, ...)
 - Add 100 contents per second
 - Update 5500 contents per second
-- All metadata should be indexed and search with features matching dtSearch/Lucene capabilities
+- All metadata should be indexed and searchable with features matching dtSearch/Lucene capabilities
 - Metadatas should be used in reporting applied with functions like *MIN, MAX, MEAN, CUSTODIAN...*
 
 # Prerequisities
@@ -14,7 +17,7 @@ Proof of concept for a custom storage implementation. The implementation uses a 
 - Install MsSql (at least version 2016) on defult instance or update the appsettings file for the test projects if you're using a named instance
 
 # Solution Hierarchy
-The soulution has two major folders:
+The soulution has two root folders:
 
 - **src**: contains the source code
 - **tests**: cotains the unit tests and a test Importer application to test creation and update processes with sample load files
@@ -44,7 +47,7 @@ The unit tests are using [xunit](https://xunit.net/) test framework. You can use
 4. Execure **POC.Storage.Importer.exe** with one of the listed argument in the help screen
 
 ## Argument Options
-- **create** : creates some test documents
+- **create** : creates 20 test documents
 - **create1000** : creates 1000 test documents
 - **update** : updates 10000 test documents
 
