@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using Xunit;
 
 namespace POC.Storage.MsSqlESNS.Tests
@@ -24,11 +25,19 @@ namespace POC.Storage.MsSqlESNS.Tests
             Assert.True(Connection.TableExists("Field"));
         }
 
+        [Fact]
+        public async void CreateWithNumber()
+        {
+            await Storage.Metadata.Field.CreateAsync(FieldUtilities.GetRandomField(FieldType.Number), CancellationToken.None);
+        }
 
         [Fact]
-        public void Create()
+        public async void CreateWithCode()
         {
-            
+            var field = FieldUtilities.GetRandomField(FieldType.Code);
+            await Storage.Metadata.Field.CreateAsync(field, CancellationToken.None);
+            var field2 = await Storage.Metadata.Field.FindByIdAsync(field.Id, CancellationToken.None);
+            Assert.True(field.CodeConfiguration.SameAs(field2.CodeConfiguration));
         }
     }
 }
